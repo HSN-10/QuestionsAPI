@@ -1,0 +1,36 @@
+/*================================================================================
+	Item Name: Stack - Responsive Admin Theme
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+A FILE FOR RTL SUPPORT RELATED ONLY
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+h1, h2, h3, h4, h5, h6, a, span, b, strong, em, mark, small, del, ins, sub, sup, p, label,input,button {
+    font-family: 'Tajawal', sans-serif !important;
+    font-weight: 600;
+}
+.icon-menu {
+    font-size: 20px;
+}
+.dataTables_wrapper .dataTables_filter{
+    float: left;
+    text-align: left;
+}
+.dataTables_wrapper .dataTables_length {
+    float: right;
+}
+.dataTables_wrapper .dataTables_info {
+    float: right;
+}
+.dataTables_wrapper .dataTables_paginate {
+    float: left !important;
+    text-align: left;
+}
+.dt-buttons {
+     float: right !important;
+}
