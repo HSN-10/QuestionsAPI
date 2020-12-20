@@ -5,7 +5,7 @@
 -   run on terminal
 
 ```
-$ git clone https://github.com/HSN-10/SOD.git
+$ git clone https://github.com/HSN-10/QuestionsAPI.git
 $ composer install
 ```
 
