@@ -63,7 +63,7 @@
                                                 </fieldset>
 
                                                 <fieldset class="form-group col-4 mb-2 @error('category_id') has-error @enderror">
-                                                    <label for="category_id">@lang('lang.withImage')</label>
+                                                    <label for="category_id">@lang('validation.attributes.category_id')</label>
                                                     <select name="category_id" class="form-control select2 @error('category_id') is-invalid text-danger @enderror" id="category_id">
                                                         <option>@lang('lang.select')</option>
                                                         @foreach($categories as $category)
@@ -129,7 +129,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <fieldset class="form-group col-4 mb-2">
-                                                        <label for="upload">@lang("lang.answers")</label>
+                                                        <label for="upload">@lang("validation.attributes.answer2")</label>
                                                         <div class="custom-file">
                                                             <input type="file" class="custom-file-input @error('answer2') is-invalid text-danger @enderror" id="upload" name="answer2"
                                                                    accept="image/x-png,image/gif,image/jpeg,image/svg,image/webp">
@@ -146,7 +146,7 @@
                                                     </fieldset>
 
                                                     <fieldset class="form-group col-4 mb-2">
-                                                        <label for="upload">@lang("lang.answers")</label>
+                                                        <label for="upload">@lang("validation.attributes.answer3")</label>
                                                         <div class="custom-file">
                                                             <input type="file" class="custom-file-input @error('answer3') is-invalid text-danger @enderror" id="upload" name="answer3"
                                                                    accept="image/x-png,image/gif,image/jpeg,image/svg,image/webp">
@@ -163,7 +163,7 @@
                                                     </fieldset>
 
                                                     <fieldset class="form-group col-4 mb-2">
-                                                        <label for="upload">@lang("lang.answers")</label>
+                                                        <label for="upload">@lang("validation.attributes.answer4")</label>
                                                         <div class="custom-file">
                                                             <input type="file" class="custom-file-input @error('answer4') is-invalid text-danger @enderror" id="upload" name="answer4"
                                                                    accept="image/x-png,image/gif,image/jpeg,image/svg,image/webp">
@@ -197,9 +197,9 @@
                                                 </div>
                                                 <div class="row">
                                                     <fieldset class="form-group col-4 mb-2">
-                                                        <label for="answer2">@lang("lang.answers")</label>
+                                                        <label for="answer2">@lang("validation.attributes.answer2")</label>
                                                         <input type="text" class="form-control @error('answer2') is-invalid text-danger @enderror" id="answer2"
-                                                               placeholder="@lang("lang.answers")" name="answer2"
+                                                               placeholder="@lang("validation.attributes.answer2")" name="answer2"
                                                                @if(!$question->with_image) value="{{$question->answer2}}" @endif>
                                                         @error('answer2')
                                                         <span class="invalid-feedback" role="alert">
@@ -208,9 +208,9 @@
                                                         @enderror
                                                     </fieldset>
                                                     <fieldset class="form-group col-4 mb-2">
-                                                        <label for="answer2">@lang("lang.answers")</label>
+                                                        <label for="answer2">@lang("validation.attributes.answer3")</label>
                                                         <input type="text" class="form-control @error('answer3') is-invalid text-danger @enderror" id="answer2"
-                                                               placeholder="@lang("lang.answers")" name="answer3"
+                                                               placeholder="@lang("validation.attributes.answer3")" name="answer3"
                                                                @if(!$question->with_image) value="{{$question->answer3}}" @endif>
                                                         @error('answer3')
                                                         <span class="invalid-feedback" role="alert">
@@ -219,9 +219,9 @@
                                                         @enderror
                                                     </fieldset>
                                                     <fieldset class="form-group col-4 mb-2">
-                                                        <label for="answer2">@lang("lang.answers")</label>
+                                                        <label for="answer2">@lang("validation.attributes.answer4")</label>
                                                         <input type="text" class="form-control @error('answer4') is-invalid text-danger @enderror" id="answer2"
-                                                               placeholder="@lang("lang.answers")" name="answer4"
+                                                               placeholder="@lang("validation.attributes.answer4")" name="answer4"
                                                                @if(!$question->with_image) value="{{$question->answer4}}" @endif>
                                                         @error('answer4')
                                                         <span class="invalid-feedback" role="alert">

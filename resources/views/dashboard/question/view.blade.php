@@ -47,18 +47,24 @@
                                                 @lang('lang.questionsInactive')
                                             @else
                                                 @lang('lang.questions')
-                                            @endif</h4>
+                                            @endif
+                                        </h4>
                                     </form>
+                                    <fieldset class="form-group col-sm-4 mb-2">
+                                        <label for="categories">@lang('lang.categories')</label>
+                                        <select class="form-control select2" id="categories">
+                                            <option value="null">@lang('lang.select')</option>
+                                            @foreach(App\Category::all() as $category)
+                                                <option value="{{$category->name}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </fieldset>
                                     <table class="table table-striped table-bordered datatables">
                                         <thead>
                                             <tr>
                                                 <th>@lang('lang.id')</th>
                                                 <th>@lang('lang.category')</th>
                                                 <th>@lang('lang.question')</th>
-                                                <th>@lang('lang.correct_answer')</th>
-                                                <th>@lang('lang.wrongAnswer')</th>
-                                                <th>@lang('lang.wrongAnswer')</th>
-                                                <th>@lang('lang.wrongAnswer')</th>
                                                 <th>@lang('lang.isActive')</th>
                                                 <th>@lang('lang.options')</th>
                                             </tr>
@@ -71,34 +77,6 @@
                                                     <td>{{$question->question}}
                                                         @if($question->with_image)
                                                             <br><img class="rounded img-thumbnail" style="max-width: 200px;" src="{{ asset('storage/'.$question->image) }}">
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        @if($question->with_image)
-                                                            <img class="rounded img-thumbnail" style="max-width: 200px;" src="{{ asset('storage/'.$question->correct_answer) }}">
-                                                        @else
-                                                            {{$question->correct_answer}}
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        @if($question->with_image)
-                                                            <img class="rounded img-thumbnail" style="max-width: 200px;" src="{{ asset('storage/'.$question->answer2) }}">
-                                                        @else
-                                                            {{$question->answer2}}
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        @if($question->with_image)
-                                                            <img class="rounded img-thumbnail" style="max-width: 200px;" src="{{ asset('storage/'.$question->answer3) }}">
-                                                        @else
-                                                            {{$question->answer3}}
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        @if($question->with_image)
-                                                            <img class="rounded img-thumbnail" style="max-width: 200px;" src="{{ asset('storage/'.$question->answer4) }}">
-                                                        @else
-                                                            {{$question->answer4}}
                                                         @endif
                                                     </td>
                                                     <td><span class="badge @if($question->active) badge-success @else badge-danger @endif">
@@ -133,10 +111,6 @@
                                                 <th>@lang('lang.id')</th>
                                                 <th>@lang('lang.category')</th>
                                                 <th>@lang('lang.question')</th>
-                                                <th>@lang('lang.correct_answer')</th>
-                                                <th>@lang('lang.wrongAnswer')</th>
-                                                <th>@lang('lang.wrongAnswer')</th>
-                                                <th>@lang('lang.wrongAnswer')</th>
                                                 <th>@lang('lang.isActive')</th>
                                                 <th>@lang('lang.options')</th>
                                             </tr>
@@ -158,6 +132,7 @@
 @push('VendorCSS')
 <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/sweetalert2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/selects/select2.min.css') }}">
 @endpush
 @push('ThemeCSS')
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css-rtl/custom-rtl.css') }}">
@@ -174,24 +149,38 @@
 @endpush
 
 @push('PageJS')
+<script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
 <script src="{{ asset('app-assets/js/scripts/forms/custom-file-input.js') }}"></script>
     <script>
-        $('.datatables').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Arabic.json"
-            },
-                "columns": [
-                    { "width": "1%" },
-                    { "width": "10%" },
-                    { "width": "20%" },
-                    { "width": "15%" },
-                    { "width": "15%" },
-                    { "width": "15%" },
-                    { "width": "15%" },
-                    { "width": "4%" },
-                    {"width":"5%"}
-                ]
-        });
+        $.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                let categories = $('#categories').val();
+                let categoryTable = data[1];
+
+                if(categories == "null" || categoryTable.includes(categories))
+                    return true;
+
+                return false;
+            }
+        );
+        $(document).ready(function() {
+            let table = $('.datatables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Arabic.json"
+                },
+                    "columns": [
+                        { "width": "1%"},
+                        { "width": "10%" },
+                        { "width": "20%" },
+                        { "width": "4%" },
+                        {"width":"5%"}
+                    ]
+            });
+            $('#categories').change( function() {
+                table.draw();
+            });
+        } );
         $(".confirm-text").on("click", function() {
             let category = this.dataset.category;
             Swal.fire({

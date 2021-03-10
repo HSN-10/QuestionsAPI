@@ -182,7 +182,7 @@
                                                 <fieldset class="form-group col-4 mb-2">
                                                     <label for="answer2_text">@lang("validation.attributes.answer2")</label>
                                                     <input type="text" class="form-control @error('answer2') is-invalid text-danger @enderror" id="answer2_text"
-                                                           placeholder="@lang("lang.answers")" name="answer2" value="{{old('answer2')}}">
+                                                           placeholder="@lang("validation.attributes.answer2")" name="answer2" value="{{old('answer2')}}">
                                                     @error('answer2')
                                                     <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -192,7 +192,7 @@
                                                 <fieldset class="form-group col-4 mb-2">
                                                     <label for="answer3_text">@lang("validation.attributes.answer3")</label>
                                                     <input type="text" class="form-control @error('answer3') is-invalid text-danger @enderror" id="answer3_text"
-                                                           placeholder="@lang("lang.answers")" name="answer3" value="{{old('answer3')}}">
+                                                           placeholder="@lang("validation.attributes.answer3")" name="answer3" value="{{old('answer3')}}">
                                                     @error('answer3')
                                                     <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -202,7 +202,7 @@
                                                 <fieldset class="form-group col-4 mb-2">
                                                     <label for="answer4_text">@lang("validation.attributes.answer4")</label>
                                                     <input type="text" class="form-control @error('answer4') is-invalid text-danger @enderror" id="answer4_text"
-                                                           placeholder="@lang("lang.answers")" name="answer4" value="{{old('answer4')}}">
+                                                           placeholder="@lang("validation.attributes.answer4")" name="answer4" value="{{old('answer4')}}">
                                                     @error('answer4')
                                                     <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
