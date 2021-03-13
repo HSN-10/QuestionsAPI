@@ -19,7 +19,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::all());
+        return CategoryResource::collection(Category::where('main_category_id', 0)->get());
+    }
+
+    public function subcategory(Category $category)
+    {
+        return CategoryResource::collection(Category::where('main_category_id', $category->id)->get());
     }
 
     /**

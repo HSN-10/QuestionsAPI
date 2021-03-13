@@ -17,4 +17,12 @@ class Category extends Model
     {
         return $this->hasMany(Score::class);
     }
+    public function supCategories()
+    {
+        return $this->hasMany(Category::class,'main_category_id');
+    }
+    public function mainCategory()
+    {
+        return $this->belongsTo(Category::class,'main_category_id');
+    }
 }

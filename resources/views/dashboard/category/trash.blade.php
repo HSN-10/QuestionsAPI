@@ -40,6 +40,8 @@
                                                 <th>@lang('lang.id')</th>
                                                 <th>@lang('lang.imageCategory')</th>
                                                 <th>@lang('lang.nameCategory')</th>
+                                                <th>@lang('lang.questionsCount')</th>
+                                                <th>@lang('lang.mainCategory')</th>
                                                 <th>@lang('lang.options')</th>
                                             </tr>
                                             </thead>
@@ -49,6 +51,8 @@
                                                     <td>{{$category->id}}</td>
                                                     <td><img class="rounded img-thumbnail" src="{{ asset('storage/'.$category->image) }}"></td>
                                                     <td>{{$category->name}}</td>
+                                                    <td>{{$category->questions->count()}}</td>
+                                                    <td>{{$category->mainCategory?$category->mainCategory->name:'لايوجد'}}</td>
                                                     <td>
                                                         <div class="d-none d-md-block">
                                                             <div class="btn-group">
@@ -89,6 +93,8 @@
                                                 <th>@lang('lang.id')</th>
                                                 <th>@lang('lang.imageCategory')</th>
                                                 <th>@lang('lang.nameCategory')</th>
+                                                <th>@lang('lang.questionsCount')</th>
+                                                <th>@lang('lang.mainCategory')</th>
                                                 <th>@lang('lang.options')</th>
                                             </tr>
                                             </tfoot>
@@ -135,6 +141,7 @@
                 { "width": "2%" },
                 { "width": "15%" },
                 { "width": "20%" },
+                { "width": "10%" },
                 {"width":"30%"}
             ]
         });

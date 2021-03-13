@@ -37,7 +37,7 @@
                                             @csrf
                                             <input type="hidden" name="_method" value="PUT">
                                             <div class="row">
-                                                <fieldset class="form-group col-12 mb-2">
+                                                <fieldset class="form-group col-6 mb-2">
                                                     <label for="name">@lang('lang.nameCategory')</label>
                                                     <input type="text" class="form-control @error('name') is-invalid text-danger @enderror" id="name"
                                                            placeholder="@lang('lang.nameCategory')" name="name" value="{{$category->name}}">
@@ -47,8 +47,22 @@
                                                         </span>
                                                     @enderror
                                                 </fieldset>
-                                            </div>
-                                            <div class="row">
+                                                <fieldset class="form-group col-6 mb-2 @error('main_category_id') has-error @enderror">
+                                                    <label for="main_category_id">@lang('lang.mainCategory')</label>
+                                                    <select name="main_category_id" class="form-control select2 @error('main_category_id') is-invalid text-danger @enderror" id="main_category_id">
+                                                        <option value="0">@lang('lang.withoutCategory')</option>
+                                                        @foreach($categories as $mainCategory)
+                                                            @if($mainCategory->id != $category->id)
+                                                                <option value="{{$mainCategory->id}}" @if($category->main_category_id == $mainCategory->id) selected @endif>{{$mainCategory->name}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                    @error('main_category_id')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </fieldset>
                                                 <fieldset class="form-group col-12 mb-2">
                                                     <label for="basicInput">@lang('lang.imageCategory')</label>
                                                     <div class="custom-file">
@@ -87,6 +101,9 @@
 @endsection
 
 {{-- CSS --}}
+@push('VendorCSS')
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/selects/select2.min.css') }}">
+@endpush
 @push('ThemeCSS')
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css-rtl/custom-rtl.css') }}">
 @endpush
@@ -103,4 +120,6 @@
 {{-- JS --}}
 @push('PageJS')
     <script src="{{ asset('app-assets/js/scripts/forms/custom-file-input.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/select/form-select2.js') }}"></script>
 @endpush

@@ -30,7 +30,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.category.create');
+        $categories = Category::where('main_category_id', 0)->get();
+        return view('dashboard.category.create', compact(['categories']));
     }
 
     /**
@@ -44,13 +45,15 @@ class CategoryController extends Controller
         $path = 'images/category';
         $validate = $request->validate([
             'name' => 'required',
-            'image' => 'required|image'
+            'image' => 'required|image',
+            'main_category_id' => 'required'
         ]);
 
         $saveImage = $request->file('image')->store('public/' . $path);
         $save = Category::create([
             'name' => $request->name,
-            'image' => $path . '/' . basename($saveImage)
+            'image' => $path . '/' . basename($saveImage),
+            'main_category_id' => $request->main_category_id
         ]);
 
         if ($save)
@@ -78,7 +81,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard.category.edit', compact(['category']));
+        $categories = Category::where('main_category_id', 0)->get();
+        return view('dashboard.category.edit', compact(['category', 'categories']));
     }
 
     /**
@@ -93,7 +97,8 @@ class CategoryController extends Controller
         $path = 'images/category';
         $validate = $request->validate([
             'name' => 'required',
-            'image' => 'image'
+            'image' => 'image',
+            'main_category_id' => 'required'
         ]);
 
         if ($request->file('image')) {
@@ -103,6 +108,7 @@ class CategoryController extends Controller
             $category->image = $path . '/' . basename($saveImage);
         }
         $category->name = $request->name;
+        $category->main_category_id = $request->main_category_id;
         if ($category->save())
             return redirect()->route('category.index')->with(['success' => Lang::get('lang.updateSuccess')]);
         else

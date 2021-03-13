@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('categories', 'API\CategoryController@index');
+Route::get('categories/{category}', 'API\CategoryController@subcategory');
 Route::get('categories/{category}/questions', 'API\CategoryController@questions');
 Route::get('categories/{category}/scores', 'API\CategoryController@scores');
 Route::post('categories/{category}/scores/Save', 'API\CategoryController@saveScore');

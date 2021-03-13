@@ -87,8 +87,8 @@ return [
     'editAd' => 'تعديل الإعلان',
     'select' => 'اختار',
     'incorrectpassword' => 'كلمة المرور القديم خاطئة',
-    '' => '',
-    '' => '',
-    '' => '',
+    'mainCategory' => 'قسم الرئيسي',
+    'questionsCount' => 'عدد الاسئلة',
+    'withoutCategory' => 'بدون قسم رئيسي',
 
 ];
