@@ -14,9 +14,8 @@ $ composer install
 
 ```
 APP_NAME="{Name Project}"
-APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
+APP_ENV=production
+APP_DEBUG=false
 APP_URL={yourdomain}
 
 DB_CONNECTION=mysql
