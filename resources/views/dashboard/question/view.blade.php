@@ -53,9 +53,9 @@
                                     <fieldset class="form-group col-sm-4 mb-2">
                                         <label for="categories">@lang('lang.categories')</label>
                                         <select class="form-control select2" id="categories">
-                                            <option value="null">@lang('lang.select')</option>
+                                            <option value="null">@lang('lang.showAll') - {{App\Question::all()->count()}}</option>
                                             @foreach(App\Category::all() as $category)
-                                                <option value="{{$category->name}}">{{$category->name}}</option>
+                                                <option value="{{$category->name}}">{{$category->name}} - {{$category->questions->count()}}</option>
                                             @endforeach
                                         </select>
                                     </fieldset>

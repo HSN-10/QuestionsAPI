@@ -90,5 +90,5 @@ return [
     'mainCategory' => 'قسم الرئيسي',
     'questionsCount' => 'عدد الاسئلة',
     'withoutCategory' => 'بدون قسم رئيسي',
-
+    'showAll' =>  'اظهار الكل'
 ];
