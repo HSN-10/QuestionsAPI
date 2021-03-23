@@ -53,6 +53,7 @@ Route::group(['prefix' => 'adminpanel', 'middleware' => ['auth']], function () {
     Route::resource('category', 'dashboard\CategoryController');
 
     // Questions URL
+    Route::get('question/create/{category}', 'dashboard\QuestionController@createWithCategory')->name('question.createWithCategory');
     Route::get('question/{question}/active', 'dashboard\QuestionController@active')->name('question.active');
     Route::get('question/inactive', 'dashboard\QuestionController@inactive')->name('question.inactive');
     Route::resource('question', 'dashboard\QuestionController');

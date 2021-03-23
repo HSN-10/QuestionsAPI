@@ -31,7 +31,20 @@ class QuestionController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('dashboard.question.create', compact(['categories']));
+        $categoryDefault = 0;
+        return view('dashboard.question.create', compact(['categories', 'categoryDefault']));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createWithCategory(Category $category)
+    {
+        $categories = Category::all();
+        $categoryDefault = $category->id;
+        return view('dashboard.question.create', compact(['categories', 'categoryDefault']));
     }
 
     /**

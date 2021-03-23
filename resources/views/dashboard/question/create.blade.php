@@ -66,7 +66,7 @@
                                                 <select name="category_id" class="form-control select2 @error('category_id') is-invalid text-danger @enderror" id="category_id">
                                                     <option  @if(!old('category_id')) selected @endif>@lang('lang.select')</option>
                                                     @foreach($categories as $category)
-                                                        <option @if(old('category_id') == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                                                        <option @if(old('category_id') == $category->id || $categoryDefault == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('category_id')
@@ -79,8 +79,8 @@
                                             <fieldset class="form-group col-4 mb-2 @error('active') has-error @enderror">
                                                 <label for="active">@lang('lang.isActive')</label>
                                                 <select name="active" class="select2 form-control withoutSearch @error('active') is-invalid text-danger @enderror" id="active">
-                                                    <option value="1" @if(old('active')) selected @endif>@lang('lang.active')</option>
-                                                    <option value="0" @if(!old('active')) selected @endif>@lang('lang.inActive')</option>
+                                                    <option value="1" selected>@lang('lang.active')</option>
+                                                    <option value="0">@lang('lang.inActive')</option>
                                                 </select>
                                                 @error('active')
                                                 <span class="invalid-feedback" role="alert">

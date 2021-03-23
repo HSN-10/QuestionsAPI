@@ -55,6 +55,9 @@
                                                     <td>
                                                         <div class="d-none d-md-block">
                                                             <div class="btn-group">
+                                                                <a href="{{route('question.createWithCategory', $category->id)}}" class="btn btn-group btn-secondary square">
+                                                                    <i class="fas fa-plus mr-1"></i> @lang('lang.createQuestion')
+                                                                </a>
                                                                 <a href="{{route('score.index', $category->id)}}" class="btn btn-group btn-primary square">
                                                                     <i class="fas fa-table mr-1"></i> @lang('lang.scoresCategory')
                                                                 </a>
@@ -72,6 +75,8 @@
                                                                 <button type="button" class="btn btn-secondary dropdown-toggle"
                                                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
                                                                 <div class="dropdown-menu" style="right: -150% !important;">
+                                                                    <a class="dropdown-item"
+                                                                       href="{{route('question.createWithCategory', $category->id)}}"><i class="fas fa-plus mr-1"></i> @lang('lang.createQuestion')</a>
                                                                     <a class="dropdown-item"
                                                                        href="{{route('score.index', $category->id)}}"><i class="fas fa-table mr-1"></i> @lang('lang.scoresCategory')</a>
                                                                     <a class="dropdown-item"
