@@ -3,8 +3,8 @@
 Author: Hassan
 Website: https://www.7assan.dev/
 Contact: h-@outlook.in
-twitter: www.twitter.com/7assanDev
-instagram: www.instagram.com/7assanDev
+twitter: @7assanDev
+instagram: @7assanDev
 -->
 <html class="loading" lang="ar" data-textdirection="rtl">
   <!-- BEGIN: Head-->
