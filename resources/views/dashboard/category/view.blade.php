@@ -140,17 +140,19 @@
 @push('PageJS')
 <script src="{{ asset('app-assets/js/scripts/forms/custom-file-input.js') }}"></script>
     <script>
-        $('.datatables').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Arabic.json"
-            },
-                "columns": [
-                    { "width": "2%" },
-                    { "width": "15%" },
-                    { "width": "20%" },
-                    { "width": "10%" },
-                    {"width":"30%"}
-                ]
+        $(document).ready(function() {
+            let table = $('.datatables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Arabic.json"
+                },
+                    "columns": [
+                        { "width": "2%" },
+                        { "width": "15%" },
+                        { "width": "20%" },
+                        { "width": "10%" },
+                        {"width":"30%"}
+                    ]
+            });
         });
         $(".confirm-text").on("click", function() {
             let category = this.dataset.category;
